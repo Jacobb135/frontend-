@@ -1,17 +1,19 @@
-const boxes = document.querySelectorAll(".box")
+const left = document.querySelector(".left")
+const right = document.querySelector(".right")
+const container = document.querySelector(".container")
 
-window.addEventListener("scroll", checkBoxes)
+left.addEventListener("mouseenter", () => {
+  container.classList.add("hover-left")
+})
 
-function checkBoxes() {
-  const triggerBottom = (window.innerHeight / 5) * 4
+left.addEventListener("mouseleave", () => {
+  container.classList.remove("hover-left")
+})
 
-  boxes.forEach((box) => {
-    const boxTop = box.getBoundingClientRect().top
+right.addEventListener("mouseenter", () => {
+  container.classList.add("hover-right")
+})
 
-    if (boxTop < triggerBottom) {
-      box.classList.add("show")
-    } else {
-      box.classList.remove("show")
-    }
-  })
-}
+right.addEventListener("mouseleave", () => {
+  container.classList.remove("hover-right")
+})
