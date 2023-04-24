@@ -1,8 +1,17 @@
-const search = document.querySelector(".search")
-const btn = document.querySelector(".btn")
-const input = document.querySelector(".input")
+const boxes = document.querySelectorAll(".box")
 
-btn.addEventListener("click", () => {
-  search.classList.toggle("active")
-  input.focus()
-})
+window.addEventListener("scroll", checkBoxes)
+
+function checkBoxes() {
+  const triggerBottom = (window.innerHeight / 5) * 4
+
+  boxes.forEach((box) => {
+    const boxTop = box.getBoundingClientRect().top
+
+    if (boxTop < triggerBottom) {
+      box.classList.add("show")
+    } else {
+      box.classList.remove("show")
+    }
+  })
+}
